@@ -37,7 +37,18 @@ bool ActualizarPila(int id, const string& nuevoNombre) {
     cout << "? Proceso no encontrado con ID: " << id << endl;
     return false;
 }
-
+// Función para eliminar el proceso del tope de la pila (pop)
+bool EliminarProceso() {
+if(tope == NULL){
+    cout <<"No hay procesos para eliminar.\n;
+return false;
+    }
+    Nodo*temp = tope ;
+    cout<<"Proceso eliminado:<< temp -> <<"-"<<"temp -> nombre<< endl;
+    tope = tope ->siguiente;
+    delete temp;
+    return true;
+}
 // Función para mostrar los procesos en la pila
 void MostrarPila() {
     Nodo* actual = tope;
@@ -71,7 +82,8 @@ int main() {
         cout << "1. Ingresar proceso\n";
         cout << "2. Actualizar proceso\n";
         cout << "3. Mostrar pila\n";
-        cout << "0. Salir\n";
+        cout << "4.Eliminar proceso del tope\n;
+        cout << "5. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
 
@@ -97,8 +109,10 @@ int main() {
             case 3:
                 MostrarPila();
                 break;
-
-            case 0:
+            case 4:
+                EliminarProceso();
+                break;
+            case 5:
                 cout << "Saliendo del programa...\n";
                 break;
 
