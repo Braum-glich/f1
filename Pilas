@@ -49,6 +49,27 @@ return false;
     delete temp;
     return true;
 }
+
+// Función para buscar un proceso por nombre
+void BuscarPorNombre(const string& nombreBuscado) {
+    Nodo* actual = tope;
+    bool encontrado = false;
+    cout << "\n Buscando proceso con nombre: " << nombreBuscado << endl;
+
+    while (actual != NULL) {
+        if (actual->nombre == nombreBuscado) {
+            cout << " Proceso encontrado - ID: " << actual->id << ", Nombre: " << actual->nombre << endl;
+            encontrado = true;
+            break;
+        }
+        actual = actual->siguiente;
+    }
+
+    if (!encontrado) {
+        cout << " No se encontró ningún proceso con ese nombre.\n";
+    }
+}
+
 // Función para mostrar los procesos en la pila
 void MostrarPila() {
     Nodo* actual = tope;
@@ -83,7 +104,8 @@ int main() {
         cout << "2. Actualizar proceso\n";
         cout << "3. Mostrar pila\n";
         cout << "4.Eliminar proceso del tope\n;
-        cout << "5. Salir\n";
+        cout << "5.Buscar proceso por nombre\n;
+        cout << "6. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
 
@@ -113,6 +135,13 @@ int main() {
                 EliminarProceso();
                 break;
             case 5:
+                cin.ignore();
+                cout <<"Ingrese el nombre del proceso a buscar:";
+                getline(cin,nombre);
+                BuscarPorNombre(nombre);
+                break;
+
+            case 6:
                 cout << "Saliendo del programa...\n";
                 break;
 
